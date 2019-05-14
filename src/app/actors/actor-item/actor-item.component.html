@@ -1,0 +1,11 @@
+  <div class="item-actor">
+    <a [routerLink]="['/actors', actor.id]" class="img-actor">
+      <img  src="{{imgPath + actor.profile_path}}" alt="" appLoadImg>
+    </a>
+    <div class="info-actor">
+      <a [routerLink]="['/actors', actor.id]">{{actor.name}} </a>
+      <p>{{modifyData(actor.known_for)}}</p>
+    </div>
+  </div>
+
+

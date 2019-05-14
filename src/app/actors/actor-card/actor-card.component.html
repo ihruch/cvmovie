@@ -1,0 +1,113 @@
+<div class="head">
+  <div class="container">
+    <div class="wrapper_head">
+
+      <div class="content d-flex  flex-column flex-md-row ">
+        <div class="img-block" > 
+          <img 
+            appLoadImg  
+            src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{dataActor.profile_path}}" 
+            alt="actor-{{dataActor.name}}" >
+        </div>
+        <div class="biography-block d-flex flex-column flex-nowrap">
+          <div class="title-actor d-flex flex-row align-items-center flex-md-column align-items-md-start">
+
+            <h1>{{dataActor.name}}</h1>
+            <div class="social-links">
+              <a *ngIf="dataTwitter.status"  href="{{dataTwitter.path + dataTwitter.id}}" target="_blank" >
+                <fa-icon  [icon]="dataTwitter.icon" size="2x" [styles]="{'color': 'black'}"></fa-icon>
+              </a> 
+              <a *ngIf="dataFb.status"  href="{{dataFb.path + dataFb.id}}"  target="_blank" >
+                <fa-icon  [icon]="dataFb.icon" size="2x" [styles]="{'color': 'black'}"></fa-icon>
+              </a>
+              <a *ngIf="dataInst.status"  href="{{dataInst.path + dataInst.id}}" target="_blank" >
+                <fa-icon  [icon]="dataInst.icon" size="2x" [styles]="{'color': 'black'}"></fa-icon>
+              </a> 
+
+            
+            </div>
+
+          </div>
+          <div class="info-actor">
+            <h4>Биография</h4>
+            <p class="meta">
+              {{dataActor.biography | slice:0: 300}}
+            </p>
+          </div>
+          
+          <div class="more d-flex justify-content-center" >
+            <fa-icon  [icon]="faCalendar" size="2x" [styles]="{'color': '#01d277'}" (click)="openOverview()"></fa-icon>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="separate "></div>
+
+<div class="sections">
+   <div class="container">
+     <div class="row">
+      <div class="col-md-3 border">
+          <div class="gray-column">
+            <div class="content-info">
+              <h3>Информация о персоне</h3>
+              
+              <p>
+                <Strong>Пол </Strong><br>
+                {{checkGender(dataActor.gender)}}
+              </p>
+              <p>
+                <Strong>Всего фильмов </Strong><br>
+                {{playFilms.cast.length}}
+              </p>
+              <p>
+                <Strong>День рождения </Strong><br>
+                {{dataActor.birthday}}
+              </p>
+              <p>
+                <Strong>Место рождения </Strong><br>
+                {{dataActor.place_of_birth}}
+              </p>
+              
+              <div>
+                <Strong>Также известен как </Strong><br>
+                <ul>
+                  <li *ngFor="let item of dataActor.also_known_as">{{item}}</li>
+                </ul>
+              </div>
+            </div>
+          </div>   
+      </div>
+
+      <div class="col-md-9 border">
+        <div class="white-column">
+
+          <div class="content-known-for">
+            <h3>Известен по </h3>
+            <div class="items d-flex frex-row flex-wrap justify-content-center" >
+                
+              <div class="item-film " *ngFor="let item of dataAlsoKnown | slice:0:8">
+                <a [routerLink]="['/films', item.id]">
+                <div class="img-block-film">
+                  <img src="https://image.tmdb.org/t/p/w150_and_h225_bestv2/{{item?.poster_path}}" alt="">
+                </div>
+                <div class="info">
+                    <h4>{{item.title}} </h4>
+                </div>
+                </a>
+              </div>
+            
+
+            </div>   
+          </div>
+
+        </div>
+      </div>
+    </div>
+   </div> 
+</div>
+

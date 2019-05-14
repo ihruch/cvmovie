@@ -1,0 +1,107 @@
+@import './../../media.scss';
+
+$bg-color: #F5F5F5;
+* {
+    font-family: 'Source Sans Pro', Arial, sans-serif; 
+    color: black;
+}
+.row{
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+h1{
+    font-size: 40px;
+}
+.head{
+    background-color: $bg-color;
+    .content{
+        padding: 40px 0
+    }
+    .img-block{
+        flex: 0 0 300px;
+        height: 450px;
+        background-color: #ddd;
+        display: flex;
+        @include media(768){
+            background-color: transparent;
+            margin-bottom: 30px;
+        }
+        img{ 
+            margin: auto;
+        }
+    }
+    .biography-block{
+        width: 100%;
+        padding: 0 0 0 40px;
+        @include media(768){
+            padding: 0;
+        }
+        .title-actor{
+            margin-bottom: 30px;
+            h1{ 
+                margin: 0;
+                line-height: 45px;
+                @include media(425){
+                    font-size: 30px;
+                }
+            }
+            a{ 
+                margin-right: 5px
+            }
+        }
+        .meta{
+            font-size: 16px;
+            @include media(425){
+                font-size: 14   px;
+            }
+        }
+        .social-links{
+            @include media(768){
+                margin-left: 15px;
+            } 
+        }
+        .more{
+            margin-top: auto;
+        }
+    }
+}
+
+.separate{
+    background-color: #01d277;
+    height: 45px;;
+}
+
+.content-info{
+    h3{
+        border-bottom: 1px solid #eee;
+        padding-bottom: 15px;
+    }  
+
+}
+.items{
+    
+    overflow: hidden;
+    .item-film{
+        margin: 15px;
+        flex: 0 0 150px;
+        
+        .img-block-film{
+            height: 225px;
+            display: block;
+            background-color: #eee;
+            img{
+                border-radius: 5px;
+            }
+        }
+        .info{
+            padding: 5px;
+        }
+        h4{
+            font-size: 12px;
+            text-align: center;
+            font-weight: normal;
+            white-space: normal;
+
+        }
+    }
+}

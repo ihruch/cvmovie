@@ -1,0 +1,49 @@
+<div class="film-people">
+  <div class="container">
+    <div class="content d-flex flex-column flex-sm-row">
+      
+      <div class="actors">
+        <h3>В ролях <span class="title-qyt">({{filmActors.length}})</span></h3>
+        <ul class="actor-list">
+          <li *ngFor="let actor of filmActors" >
+            <div class="item-actor d-flex flex-row align-items-center ">
+              <a href="#"> 
+                <div class="item-actor-img" [ngStyle]="{'background-image': 'url( https://image.tmdb.org/t/p/w66_and_h66_face'+ actor.profile_path +')' }">
+                </div>            
+              </a>    
+            
+              <div class="item-actor-info">
+                <a href="#"> 
+                  <p class="info-name">{{actor.name}}</p>
+                </a>  
+                <p class="info-character">{{actor.character}} </p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="crew">
+        <h3>Создатели <span class="title-qyt">({{filmCrew.length}})</span></h3>
+        <ul class="crew-list">
+          <li *ngFor="let crew of filmCrew">
+            <div class="item-crew  d-flex flex-row align-items-center ">
+              <a href="#"> 
+                <div class="item-crew-img" [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/w66_and_h66_face'+ crew.profile_path +')' }">
+                </div>
+              </a>    
+            
+              <div class="item-crew-info">
+                <a href="#"> 
+                  <p class="info-name">{{crew.name}}</p>
+                </a>  
+                <p class="info-job">{{crew.job}} </p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>

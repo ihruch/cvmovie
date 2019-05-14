@@ -1,0 +1,27 @@
+<div class="container">
+
+
+  <div class="row">
+    <mat-card class="d-flex flex-column align-items-end flex-md-row justify-content-md-between ">
+      <mat-form-field>
+        <mat-select [(value)]="selected" (selectionChange)='changeView()'>
+          <mat-option value="minSizeImg">mini</mat-option>
+          <mat-option value="medSizeImg">medium</mat-option>
+        </mat-select>
+      </mat-form-field>        
+      
+      <mat-paginator 
+        [length]='lengthPag' 
+        [pageSize]='pageSizePag' 
+        [showFirstLastButtons]='true' 
+        [hidePageSize]="true"
+        (page)='pageEvent = $event'
+        (click)='handlerClickPaginator($event)'>
+      </mat-paginator>
+    </mat-card>
+  </div>
+  
+  <div class="row pt-3 pb-3">
+    <app-film-item *ngFor="let film of dataFilms" [film]='film' [imgPath]='imgPath' [view]='kindView'> </app-film-item>
+  </div>  
+</div>

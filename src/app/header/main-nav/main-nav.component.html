@@ -1,0 +1,32 @@
+
+    <div class="container">
+        <div class="row pt-3 d-flex  align-items-center justify-content-end">
+            <a href="/" class="mr-auto">
+                 <img src="./../../../assets/primary-green-logo.svg" alt="Logo main">
+            </a>    
+            <mat-nav-list *ngIf="!isShow" class="">
+                <a mat-button  *ngFor="let link of links" [routerLink]="link['path']"  [routerLinkActive]="link['active']">
+                    <i class="material-icons ">{{ link['icon'] }}</i> {{ link['label'] }}
+                </a>
+            </mat-nav-list>
+
+            <!-- mobile menu -->
+
+            <button class="menu-btn-mob" mat-icon-button [matMenuTriggerFor]="menu" *ngIf="isShow">
+                    <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" >
+                <button mat-menu-item  *ngFor="let link of links" [routerLink]="link['path']"  [routerLinkActive]="link['active']">
+                    <mat-icon>{{ link['icon'] }}</mat-icon>
+                    <span>{{ link['label'] }}</span>
+                </button>
+            </mat-menu>
+
+
+        </div>  
+    </div>
+
+
+ 
+
+

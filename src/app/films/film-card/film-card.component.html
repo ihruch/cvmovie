@@ -1,0 +1,161 @@
+<div class="header">
+  <div class="header-bgfon" [ngStyle]="bkUrl"></div>
+  <div class="header-overlay"></div>
+ 
+  <div class="container">
+    <div class="row">
+       <div class="content">
+          <mat-card class="d-flex flex-column flex-sm-row card-item  " >
+              <div class="img-wrapper d-flex justify-content-center">
+                  <img  
+                    crossOrigin="anonymous" 
+                    appLoadImg
+                    #imgCard 
+                    src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{filmDesc.poster_path}}" 
+                    alt="{{filmDesc.title}}">
+              </div>
+
+              <mat-card-content class="d-flex flex-column card-content" >
+               
+                <div class="ctx-title d-flex flex-column justify-content-start">
+                    <h1>{{filmDesc?.title}}</h1> 
+                    <span>({{filmDesc?.release_date | slice:0:4}})</span> 
+                </div>
+                  
+                <ul class="ctx-social-block d-flex flex-row align-items-center">
+  
+                  <li class='ctx-social-block-ratio d-flex flex-row align-items-center'>
+                      <app-ratio-icon mat-card-avatar [ratingVote]='filmDesc?.vote_average'  [sizeRatingIcon]='63' ></app-ratio-icon>
+                      <div>Рейтинг</div>
+                  </li>
+            
+                  <!-- <li>
+                    <button mat-fab (click)="addFavorite()">
+                      <mat-icon>favorite</mat-icon>
+                    </button>
+                  </li>
+                  <li>
+                    <button mat-fab (click)="addBookmark()">
+                      <mat-icon>bookmark</mat-icon>
+                    </button>
+                  </li> -->
+                  <li>
+                    <button mat-fab (click)="playYoutube()" [disabled]='isVisible'>
+                      <mat-icon *ngIf='!isVisible' >play_arrow</mat-icon>
+                      <mat-icon *ngIf='isVisible' [ngStyle]="{'color': '#eee'}">play_arrow</mat-icon>
+                    </button>
+                  </li>
+                    
+                </ul>    
+                  
+                <div class="ctx-overview">
+                  <h3>Обзор</h3>
+                  <p>{{ filmDesc?.overview }}</p>
+                </div>
+                  
+                <div class="ctx-footer mt-auto">
+                    <h3>Создатели</h3>
+                  <ul class="d-flex flex-row flex-wrap justify-content-start">
+                    <li *ngFor="let crew of tempCrewArr">
+                      <h4><strong>{{crew?.name}}</strong></h4>
+                      <span>{{crew?.job}}</span>
+                    </li>
+                  </ul>    
+                </div>
+
+              </mat-card-content>    
+          </mat-card> 
+        </div>    
+    </div>
+  </div>
+</div>
+
+<div class="sections">
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-md-9">
+         <div class="white_column">
+           <h3>В главных ролях </h3>  
+          
+           <div class="actors d-flex flex-row flex-wrap justify-content-center justify-content-md-start">
+             <div class="actor-item " *ngFor="let item of  filmActors | slice:0:5">
+               <div class="actor-img" [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/w138_and_h175_face'+ item.profile_path +')' }">
+
+               </div>
+               <div class="actor-ctx">
+                 <p class="actor-name">{{item?.name}}</p>
+                 <p class="actor-character">  {{item?.character}}</p>
+
+               </div>
+             </div>
+           </div> 
+           <div class="actor-more">
+              <a [routerLink]="['/films',filmDesc.id, 'actors']">ЕЩЕ</a>
+           </div>
+           
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="grey_column">
+
+          <div class="facts">
+              
+              <ul class="social-block d-flex flex-row">
+                <li>
+                  <a href="http://www.facebook.com/" target="_blank" >
+                    <fa-icon [icon]="fb" size="2x" [styles]="{'color': 'black'}"></fa-icon>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.instagram.com" target="_blank" >
+                    <fa-icon [icon]="insta" size="2x" [styles]="{'color': 'black'}"></fa-icon>
+                  </a>
+                </li>
+              </ul>
+              
+              <h4>Факты </h4>
+              <p>
+                <strong>Оригинальное название </strong><br>
+                {{filmDesc?.original_title}}
+              </p>
+
+              <p>
+                <strong>Статус</strong><br>
+                {{filmDesc?.status}}
+              </p>
+
+              <p>
+                <strong>Оригинальный язык</strong><br>
+                {{filmDesc?.original_language}} 
+                
+              </p>
+              <p>
+                <strong>Продолжительность</strong><br>
+                {{filmDesc?.runtime}}min
+              </p>  
+              <p>
+                <strong>Бюджет</strong><br>
+                {{filmDesc?.budget | currency }} 
+              </p> 
+
+          </div>
+          <div class="genres">
+            <h4>Жанры</h4>
+            <ul class="genre-list d-flex flex-row flex-wrap">
+              <li *ngFor="let item of filmDesc.genres">
+                {{item.name}}
+              </li>
+            </ul>
+          </div>
+          
+
+        </div> <!-- end grey_column-->
+      </div>
+
+    </div><!-- end row  -->
+  </div><!-- end container  -->
+</div>
+
+
