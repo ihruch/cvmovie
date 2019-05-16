@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row pt-3 d-flex  align-items-center justify-content-end">
             <a href="/" class="mr-auto">
-                 <img src="./../../../assets/images/primary-green-logo.svg" alt="Logo main">
+                 <img src="assets/images/primary-green-logo.svg" alt="Logo main">
             </a>    
             <mat-nav-list *ngIf="!isShow" class="">
                 <a mat-button  *ngFor="let link of links" [routerLink]="link['path']"  [routerLinkActive]="link['active']">
