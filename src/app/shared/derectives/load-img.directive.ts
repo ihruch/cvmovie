@@ -18,7 +18,7 @@ export class LoadImgDirective implements AfterViewInit {
 
     ngAfterViewInit() {
       this.oldImg = this.el.nativeElement.getAttribute('src');
-      this.renderer.setAttribute( this.el.nativeElement, 'src', '../assets/loader-img_2.gif');
+      this.renderer.setAttribute( this.el.nativeElement, 'src', '../assets/images/loader-img_2.gif');
 
       this.newImg = this.renderer.createElement('img');
       this.renderer.setAttribute(this.newImg, 'src', this.oldImg);
