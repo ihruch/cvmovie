@@ -29,16 +29,7 @@
                       <div>Рейтинг</div>
                   </li>
             
-                  <!-- <li>
-                    <button mat-fab (click)="addFavorite()">
-                      <mat-icon>favorite</mat-icon>
-                    </button>
-                  </li>
-                  <li>
-                    <button mat-fab (click)="addBookmark()">
-                      <mat-icon>bookmark</mat-icon>
-                    </button>
-                  </li> -->
+
                   <li>
                     <button mat-fab (click)="playYoutube()" [disabled]='isVisible'>
                       <mat-icon *ngIf='!isVisible' >play_arrow</mat-icon>
@@ -79,15 +70,16 @@
            <h3>В главных ролях </h3>  
           
            <div class="actors d-flex flex-row flex-wrap justify-content-center justify-content-md-start">
-             <div class="actor-item " *ngFor="let item of  filmActors | slice:0:5">
-               <div class="actor-img" [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/w138_and_h175_face'+ item.profile_path +')' }">
+              <div class="actor-item " *ngFor="let item of  filmActors | slice:0:5">
+                <a [routerLink]="[ '/actors', item.id]">
+                  <div class="actor-img" [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/w138_and_h175_face'+ item.profile_path +')' }">
 
-               </div>
-               <div class="actor-ctx">
-                 <p class="actor-name">{{item?.name}}</p>
-                 <p class="actor-character">  {{item?.character}}</p>
-
-               </div>
+                  </div>
+                  <div class="actor-ctx">
+                    <p class="actor-name">{{item?.name}}</p>
+                    <p class="actor-character">  {{item?.character}}</p>
+                </div>
+               </a>
              </div>
            </div> 
            <div class="actor-more">

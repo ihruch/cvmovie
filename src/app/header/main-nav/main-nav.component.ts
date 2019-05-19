@@ -42,13 +42,11 @@ export class MainNavComponent implements OnInit, OnChanges {
   changeBreakPoint() {
     this.breakpointObserver.observe(['(min-width: 768px)']).subscribe( (state: BreakpointState) => {
       if (state.matches) {
-        console.log('Viewport is 768px or over!');
+        // console.log('Viewport is 768px or over!');
         this.isShow = false;
-        console.log(this.isShow);
-      } else {
-        console.log('Viewport is getting SMALLER!');
+       } else {
+        // console.log('Viewport is getting SMALLER!');
         this.isShow = true;
-        console.log(this.isShow);
       }
     });
   }
